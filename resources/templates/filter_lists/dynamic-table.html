@@ -1,0 +1,82 @@
+{% extends 'dash.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+
+	{% for filter in filter_list %}
+
+		<div class="row style-select">
+			<div class="col-md-12">
+
+
+				<div class="subject-info-box-1">
+					<label>{{ filter.paramName }} to be Included</label>
+					<select multiple class="form-control" id='lstBoxInc{{ filter.paramName }}'>
+					
+					{% for item in filter.list_toBeIncluded %}
+					
+						<option value="{{ item }}">{{ item }}</option>
+
+					{% endfor %}
+					
+					</select>
+				</div>
+
+				
+				<div class="subject-info-arrows text-center">
+					<br /><br />
+					<input type='button' id='btnAllRight{{ filter.paramName }}' value='>>' class="button_cst" /><br />
+					<input type='button' id='btnRight{{ filter.paramName }}' value='>' class="button_cst" /><br />
+					<input type='button' id='btnLeft{{ filter.paramName }}' value='<' class="button_cst" /><br />
+					<input type='button' id='btnAllLeft{{ filter.paramName }}' value='<<' class="button_cst" />
+				</div>
+
+				<div class="subject-info-box-2">
+					<label>{{ filter.paramName }} to be Excluded</label>
+					<select multiple class="form-control" id='lstBoxExc{{ filter.paramName }}'>
+					
+					{% for item in filter.list_toBeExcluded %}
+					
+						<option value="{{ item }}">{{ item }}</option>
+
+					{% endfor %}
+
+					</select>
+				</div>
+
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+	<script>
+					        
+	    $('#btnRight{{ filter.paramName }}').click(function (e) {
+	        $('select').moveToListAndDelete('#lstBoxInc{{ filter.paramName }}', '#lstBoxExc{{ filter.paramName }}');
+	        e.preventDefault();
+	    });
+
+	    $('#btnAllRight{{ filter.paramName }}').click(function (e) {
+	        $('select').moveAllToListAndDelete('#lstBoxInc{{ filter.paramName }}', '#lstBoxExc{{ filter.paramName }}');
+	        e.preventDefault();
+	    });
+
+	    $('#btnLeft{{ filter.paramName }}').click(function (e) {
+	        $('select').moveToListAndDelete('#lstBoxExc{{ filter.paramName }}', '#lstBoxInc{{ filter.paramName }}');
+	        e.preventDefault();
+	    });
+
+	    $('#btnAllLeft{{ filter.paramName }}').click(function (e) {
+	        $('select').moveAllToListAndDelete('#lstBoxExc{{ filter.paramName }}', '#lstBoxInc{{ filter.paramName }}');
+	        e.preventDefault();
+	    });
+
+	</script>
+
+
+{% endfor %}
+
+</div>	
+
+{% endblock %}
