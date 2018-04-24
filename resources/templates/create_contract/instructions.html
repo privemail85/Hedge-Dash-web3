@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Instructions - Hedge Alpha Web Application{% endblock %}
+
+{% block content %}
+
+{% load staticfiles %}
+
+  <div class="col-md-9 mainContent"><!-- Start div.col-md-9: Main Content Area (Address Bar and Instructions) -->
+    <div class="row"><!-- Start div.row: Address Bar -->
+      <div class="col-md-12 p-0"><!-- Start div.col-md-12: Address Bar -->
+        <nav aria-label="breadcrumb addressBar">
+          <ol class="breadcrumb addressBar">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}"><small><i class="fas fa-home"></i></small></a></li>
+              <li class="breadcrumb-item active" aria-current="page"><small>Instructions</small></li>
+          </ol>
+        </nav>
+      </div><!-- End div.col-md-12: Address Bar -->
+    </div><!-- End div.row: Address Bar -->
+
+    <div class="row instructions"><!-- Start div.row: Instructions Heading Area and Instructions Content Area -->
+      <div class="col-md-12"><!-- Start div.col-md-12: Instructions Heading Area and Instructions Content Area -->
+        <div class="row mb-5"><!-- Start div.row: Instructions Heading Area -->
+          <div class="col-md-12"><!-- Start div.col-md-12: Instructions Heading Area -->
+            <h5 class="my-3 mt-4">Instructions</h5>
+          </div><!-- End div.col-md-12: Instructions Heading Area -->
+        </div><!-- End div.row: Instructions Heading Area -->
+
+        <div class="row"><!-- Start div.row: All Rows' Parent Container -->
+          <div class="col-md-12"><!-- Start div.col-md-12: All Rows' Parent Container -->
+
+            <div class="row justify-content-center mb-5"><!-- Start Row 1: Text and Image -->
+              <div class="col-md-4 bp mx-2"><!-- Start div.col-md-4: Text -->
+                <h1 class="display-4 step mb-5 mt-3 ml-3">1</h1>
+                <h4 class="ml-3 mb-3 font-weight-light">Sign Up</h4>
+                <p class="instructionsText ml-3">This is a sample text: To Sign up, browse link google.ca and do the following steps to sign up to the Hedge Alpha platform.
+                </p>
+              </div><!-- End div.col-md-4: Text -->
+              <div class="col-md-6 p-0 mx-2"><!-- Start div.col-md-6: Image -->
+                <img src="{% static 'images/growth-3078543_640x426.png' %}" class="img-fluid" alt="image placeholder">
+              </div><!-- End div.col-md-6: Image -->
+            </div><!-- End div.row: Row 1: Text and Image -->
+
+            <div class="row justify-content-center mb-5"><!-- Start Row 2: Text and Image -->
+              <div class="col-md-4 bp mx-2"><!-- Start div.col-md-4: Text -->
+                <h1 class="display-4 step mb-5 mt-3 ml-3">2</h1>
+                <h4 class="ml-3 mb-3 font-weight-light">Sign Up</h4>
+                <p class="instructionsText ml-3">This is a sample text: To Sign up, browse link google.ca and do the following steps to sign up to the Hedge Alpha platform.
+                </p>
+              </div><!-- End div.col-md-4: Text -->
+              <div class="col-md-6 bp p-0 mx-2"><!-- Start div.col-md-6: Image -->
+                <img src="{% static 'images/growth-3078543_640x426.png' %}" class="img-fluid" alt="image placeholder">
+              </div><!-- End div.col-md-6: Image -->
+            </div><!-- End div.row: Row 2: Text and Image -->
+
+            <div class="row justify-content-center mb-5"><!-- Start Row 3: Text and Image -->
+              <div class="col-md-4 bp mx-2"><!-- Start div.col-md-4: Text -->
+                <h1 class="display-4 step mb-5 mt-3 ml-3">3</h1>
+                <h4 class="ml-3 mb-3 font-weight-light">Sign Up</h4>
+                <p class="instructionsText ml-3">This is a sample text: To Sign up, browse link google.ca and do the following steps to sign up to the Hedge Alpha platform.
+                </p>
+              </div><!-- End div.col-md-4: Text -->
+              <div class="col-md-6 bp p-0 mx-2"><!-- Start div.col-md-6: Image -->
+                <img src="{% static 'images/growth-3078543_640x426.png' %}" class="img-fluid" alt="image placeholder">
+              </div><!-- End div.col-md-6: Image -->
+            </div><!-- End div.row: Row 3: Text and Image -->
+
+            <div class="row justify-content-center mb-5"><!-- Start Row 4: Text and Image -->
+              <div class="col-md-4 bp mx-2"><!-- Start div.col-md-4: Text -->
+                <h1 class="display-4 step mb-5 mt-3 ml-3">4</h1>
+                <h4 class="ml-3 mb-3 font-weight-light">Sign Up</h4>
+                <p class="instructionsText ml-3">This is a sample text: To Sign up, browse link google.ca and do the following steps to sign up to the Hedge Alpha platform.
+                </p>
+              </div><!-- End div.col-md-4: Text -->
+              <div class="col-md-6 bp p-0 mx-2"><!-- Start div.col-md-6: Image -->
+                <img src="{% static 'images/growth-3078543_640x426.png' %}" class="img-fluid" alt="image placeholder">
+              </div><!-- End div.col-md-6: Image -->
+            </div><!-- End div.row: Row 4: Text and Image -->
+
+          </div><!-- End div.col-md-12: All Rows' Parent Container -->
+          </div><!-- End div.row: All Rows' Parent Container -->
+
+        </div><!-- END div.col-md-12: Instructions Heading Area and Instructions Content Area -->
+      </div><!-- END div.row: Instructions Heading Area and Instructions Content Area -->
+    </div><!-- END div.col-md-9: Main Content Area (Address Bar and Instructions) -->
+
+{% endblock %}
+
+
+    

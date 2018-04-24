@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block head_title %}My Blueprints - Hedge Alpha Web Application{% endblock %}
+
+{% block content %}
+
+{% load staticfiles %}
+
+  <div class="col-md-9 mainContent"><!-- Start div.col-md-9: Main Content Area (Address Bar and My Blueprints Main Area) -->
+    <div class="row"><!-- Start div.row: Address Bar -->
+      <div class="col-md-12 p-0"><!-- Start div.col-md-12: Address Bar -->
+        <nav aria-label="breadcrumb addressBar">
+          <ol class="breadcrumb addressBar">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}"><small><i class="fas fa-home"></i></small></a></li>
+              <li class="breadcrumb-item active" aria-current="page"><small>My Blueprints</small></li>
+          </ol>
+        </nav>
+      </div><!-- END div.col-md-12: Address Bar -->
+    </div><!-- END div.row: Address Bar -->
+
+    <div class="row mylatestBp mb-3"><!-- Start div.row: My Blueprints Main Area -->
+      <div class="col-md-12"><!-- Start div.col-md-12: My Blueprints Main Area -->
+        <div class="row"><!-- Start div.row: My Blueprints Heading (h5) Container-->
+          <div class="col-md-12"><!-- Start div.col-md-12: My Blueprints Heading (h5) Container-->
+            <h5 class="my-3 mt-4">My Blueprints</h5>
+          </div><!-- END div.col-md-12: My Blueprints Heading (h5) Container-->
+        </div><!-- END div.row: My Blueprints Heading (h5) Container-->
+<!-- ############################################################################################################################## -->
+        <div class="row"><!-- Start div.row: First Row of Blueprints Main Container -->
+          <div class="col-md-12"><!-- Start div.col-md-12: First Row of Blueprints Main Container -->
+            <div class="row mt-5 justify-content-center"><!-- Start div.row: First Row of Blueprints -->
+
+              {% for blueprint in blueprintList %}
+
+              <div class="col-md-4"><!-- Start div.col-md-4: First Blueprint Parent Container (no border) -->
+                <div class="container bp mb-3"><!-- Start div.container: First Blueprint Container (has green border) -->
+                  <h6 class="my-4 ml-4">{{ blueprint.ticker }}</h6>
+                  <p class="ml-4 small bpInfo">Creator <span class="answer">{{ blueprint.creatorAddress }}</span></p>
+                  <p class="ml-4 small bpInfo">Initial Price: <span class="answer">{{ blueprint.entryPrice }}</span></p>
+                  <p class="ml-4 small bpInfo">Target Price: <span class="answer">{{ blueprint.exitPrice }}</span></p>
+                  <p class="ml-4 small bpInfo">Creation Date: <span class="answer">{{ blueprint.creationTime }}</<span></p>
+                  <p class="ml-4 small status">Expiration Date: <span class="answer">{{ blueprint.expirationTime }}</span></p>
+                  <p class="ml-4 small status">Address: <span class="answer">{{ blueprint.address }}</span></p>
+                  <div class="text-center"><!-- Start div.text-center: Purchase Button's parent. Used class text-center to center the button --> 
+                  <button onclick="purchaseBlueprint({{ blueprint.blueprintID }})" class="btn btn-primary btn-sm buttonColor mt-2 mb-4">Purchase</button>
+
+                    
+                  </div><!-- END div.text-center: Purchase Button's parent -->
+                </div><!-- END div.container: First Blueprint Container (has green border) -->
+              </div><!-- END div.col-md-4: First Blueprint Parent Container (no border) -->
+
+              {% endfor %}
+                  <script src="{% static 'js/blueprint.js' %}"></script>
+                  <script>
+
+                    window.onload = function() {
+                      if (typeof web3 === 'undefined') {
+                        alert('You need MetaMask browser plugin to post transaction on Hedge.');
+                      }
+                    }
+
+                    metaAccount = web3.eth.accounts[0];
+
+
+                    mintContract = web3.eth.contract(mintAbi).at(mintAddress);
+                    factoryContract = web3.eth.contract(factoryAbi).at(factoryAddress);
+                    
+                    factoryContract.purchasePrice.call({from: metaAccount}, function(error, result) {
+                        
+                      if (!error) {
+                          
+                        contractPurchasePrice = Number(result);
+                        alert(contractPurchasePrice);
+
+                      } else {
+
+                        alert('failed at factory');
+
+                      } 
+                    });
+                    
+                    mintContract.allowance.call(metaAccount,factoryAddress, {from: metaAccount}, function(error, result) {
+                    
+                      if (!error) {
+
+                        amountApproved = Number(result);
+                        alert(amountApproved);
+
+                      } else {
+
+                        alert('failed at mint');
+
+                      } 
+                    });
+
+                    </script>
+         
+
+          </div><!-- END div.row: First Row of Blueprints -->
+        </div><!-- END div.col-md-12: First Row of Blueprints Main Container -->
+      </div><!-- END div.row: First Row of Blueprints Main Container -->
+
+
+
+      </div><!-- END div.col-md-12: My Blueprints Main Area -->
+    </div><!-- END div.row: My Blueprints Main Area -->
+  </div><!-- END div.col-md-9: Main Content Area (Address Bar and My Blueprints Main Area) -->
+
+{% endblock %}
+
+
+    

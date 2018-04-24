@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Blueprint Submission Confirmation - Hedge Alpha Web Application{% endblock %}
+
+{% block content %}
+
+  <div class="col-md-9 mainContent"><!-- Start div.col-md-9: Main Content Area (Address Bar and Thank You Main Container) -->
+    <div class="row"><!-- Start div.row: Address Bar -->
+      <div class="col-md-12 p-0"><!-- Start div.col-md-12: Address Bar -->
+        <nav aria-label="breadcrumb addressBar">
+          <ol class="breadcrumb addressBar">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}"><small><i class="fas fa-home"></i></small></a></li>
+            <li class="breadcrumb-item breadHover"><a href="{% url 'createablueprint' %}"><small>Create A Blueprint</small></a></li>
+            <li class="breadcrumb-item active" aria-current="page"><small>Blueprint Submission Confirmation</small></li>
+          </ol>
+        </nav>
+      </div><!-- END div.col-md-12: Address Bar -->
+    </div><!-- END div.row: Address Bar -->
+
+    <div class="row h-100 justify-content-center thankYouArea"><!--Start div.row: Thank You Main Container --><!-- To center horizontally:"justify-content-center". To center vertically: "align-items-center"-->
+
+      <div class="col-md-6 thankYouArea"><!-- Start div.col-md-6: Thank You Area -->
+        <h1 class="text-center mt-5 mb-4"><i class="fas fa-check-circle"></i></h1>
+        <h5 class="text-center mb-5">Thank You For Submitting Your Blueprint!</h5>
+        <button type="button" class="btn btn-primary btn-block btn-sm buttonColor mt-5"><!-- This buttons are better to be in a btn-block class becasue they scale up and down nicely. Otherwise the two buttons' text will be mixed with eachother when scaling down.-->
+          <a href="{% url 'createablueprint' %}">Create Another Blueprint</a>
+        </button>
+        <button type="button" class="btn btn-primary btn-block btn-sm buttonColor mt-4 float-right"><!-- This buttons are better to be in a btn-block class becasue they scale up and down nicely. Otherwise the two buttons' text will be mixed with eachother when scaling down.-->
+          <a href="{% url 'myblueprints' %}">View My Blueprints</a>
+        </button>
+      </div><!-- END div.col-md-6: Thank You Area -->
+    </div><!-- END div.row: Thank You Main Container -->
+
+  </div><!-- END div.col-md-9: Main Content Area (Address Bar and Thank You Main Container) -->
+
+{% endblock %}
+
+
+    

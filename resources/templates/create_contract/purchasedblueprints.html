@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Purchased Blueprints-Hedge Alpha Web Application{% endblock %}
+
+{% block content %}
+
+  <div class="col-md-9 mainContent"><!-- Start div.col-md-9: Main Content Area (Address Bar and My Purchased Blueprints Main Area) -->
+    <div class="row"><!-- Start div.row: Address Bar -->
+      <div class="col-md-12 p-0"><!-- Start div.col-md-12: Address Bar -->
+        <nav aria-label="breadcrumb addressBar">
+          <ol class="breadcrumb addressBar">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}"><small><i class="fas fa-home"></i></small></a></li>
+              <li class="breadcrumb-item active" aria-current="page"><small>Purchased Blueprints</small></li>
+          </ol>
+        </nav>
+      </div><!-- END div.col-md-12: Address Bar -->
+    </div><!-- END div.row: Address Bar -->
+
+    <div class="row mylatestBp mb-3"><!-- Start div.row: My Purchased Blueprints Main Area -->
+      <div class="col-md-12"><!-- Start div.col-md-12: My Purchased Blueprints Main Area -->
+        <div class="row"><!-- Start div.row: My Purchased Blueprints Heading (h5) Container-->
+          <div class="col-md-12">
+            <h5 class="my-3 mt-4">Purchased Blueprints</h5>
+          </div>
+        </div><!-- END div.row: My Purchased Blueprints Heading (h5) Container-->
+
+        <div class="row"><!-- Start div.row: First Row of Purchased Blueprints Main Container -->
+          <div class="col-md-12"><!-- Start div.col-md-12: First Row of Purchased Blueprints Main Container -->
+
+            <div class="row mt-5 justify-content-center"><!-- Start div.row: First Row of Purchased Blueprints -->
+              <div class="col-md-4"><!-- Start div.col-md-4: First Purchased Blueprint Parent Container (no border) -->
+                <div class="container bp mb-3"><!-- Start div.container: First Purchased Blueprint Container (has green border) -->
+                  <h6 class="my-4 ml-4">ETHUSD</h6>
+                  <p class="ml-4 small bpInfo">Initial Price: <span class="answer">$500</span></p>
+                  <p class="ml-4 small bpInfo">Target Price: <span class="answer">$600</span></p>
+                  <p class="ml-4 small bpInfo">Predicted Reward: <span class="answer">$100 (20%)</<span></p>
+                  <p class="ml-4 small bpInfo">Analysis Method: <span class="answer">Technical</span></p>
+                  <p class="ml-4 small status">Status: <span class="answer">Active</span></p>
+                  <p class="ml-4 small status">By: <span class="answer">Username</span></p>
+              </div><!-- END div.container: First Purchased Blueprint Container (has green border) -->
+            </div><!-- END div.col-md-4: First Purchased Blueprint Parent Container (no border) -->
+
+              <div class="col-md-4">
+                <div class="container bp mb-3">
+                  <h6 class="my-4 ml-4">ETHUSD</h6>
+                  <p class="ml-4 small bpInfo">Initial Price: <span class="answer">$500</span></p>
+                  <p class="ml-4 small bpInfo">Target Price: <span class="answer">$600</span></p>
+                  <p class="ml-4 small bpInfo">Predicted Reward: <span class="answer">$100 (20%)</<span></p>
+                  <p class="ml-4 small bpInfo">Analysis Method: <span class="answer">Technical</span></p>
+                  <p class="ml-4 small status">Status: <span class="answer">Active</span></p>
+                  <p class="ml-4 small status">By: <span class="answer">Username</span></p>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="container bp mb-3">
+                  <h6 class="my-4 ml-4">ETHUSD</h6>
+                  <p class="ml-4 small bpInfo">Initial Price: <span class="answer">$500</span></p>
+                  <p class="ml-4 small bpInfo">Target Price: <span class="answer">$600</span></p>
+                  <p class="ml-4 small bpInfo">Predicted Reward: <span class="answer">$100 (20%)</<span></p>
+                  <p class="ml-4 small bpInfo">Analysis Method: <span class="answer">Technical</span></p>
+                  <p class="ml-4 small status">Status: <span class="answer">Active</span></p>
+                  <p class="ml-4 small status">By: <span class="answer">Username</span></p>
+                </div>
+              </div>
+
+            </div><!-- END div.row: First Row of Purchased Blueprints -->
+          </div><!-- END div.col-md-12: First Row of Purchased Blueprints Main Container -->
+        </div><!-- END div.row: First Row of Purchased Blueprints Main Container -->
+
+        <div class="row"><!-- Start div.row: Second Row of Purchased Blueprints Main Container -->
+          <div class="col-md-12"><!-- Start div.col-md-12: Second Row of Purchased Blueprints Main Container -->
+            <div class="row mt-2 justify-content-center"><!-- Start div.row: Second Row of Purchased Blueprints -->
+              <div class="col-md-4"><!-- Start div.col-md-4: First Purchased Blueprint Parent Container (no border) -->
+                <div class="container bp mb-3"><!-- Start div.container: First Purchased Blueprint Container (has green border) -->
+                  <h6 class="my-4 ml-4">ETHUSD</h6>
+                  <p class="ml-4 small bpInfo">Initial Price: <span class="answer">$500</span></p>
+                  <p class="ml-4 small bpInfo">Target Price: <span class="answer">$600</span></p>
+                  <p class="ml-4 small bpInfo">Predicted Reward: <span class="answer">$100 (20%)</<span></p>
+                  <p class="ml-4 small bpInfo">Analysis Method: <span class="answer">Technical</span></p>
+                  <p class="ml-4 small status">Status: <span class="answer">Active</span></p>
+                  <p class="ml-4 small status">By: <span class="answer">Username</span></p>
+                </div><!-- END div.container: First Purchased Blueprint Container (has green border) -->
+              </div><!-- END div.col-md-4: First Purchased Blueprint Parent Container (no border) -->
+
+              <div class="col-md-4">
+                <div class="container bp mb-3">
+                  <h6 class="my-4 ml-4">ETHUSD</h6>
+                  <p class="ml-4 small bpInfo">Initial Price: <span class="answer">$500</span></p>
+                  <p class="ml-4 small bpInfo">Target Price: <span class="answer">$600</span></p>
+                  <p class="ml-4 small bpInfo">Predicted Reward: <span class="answer">$100 (20%)</<span></p>
+                  <p class="ml-4 small bpInfo">Analysis Method: <span class="answer">Technical</span></p>
+                  <p class="ml-4 small status">Status: <span class="answer">Active</span></p>
+                  <p class="ml-4 small status">By: <span class="answer">Username</span></p>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="container bp mb-3">
+                  <h6 class="my-4 ml-4">ETHUSD</h6>
+                  <p class="ml-4 small bpInfo">Initial Price: <span class="answer">$500</span></p>
+                  <p class="ml-4 small bpInfo">Target Price: <span class="answer">$600</span></p>
+                  <p class="ml-4 small bpInfo">Predicted Reward: <span class="answer">$100 (20%)</<span></p>
+                  <p class="ml-4 small bpInfo">Analysis Method: <span class="answer">Technical</span></p>
+                  <p class="ml-4 small status">Status: <span class="answer">Active</span></p>
+                  <p class="ml-4 small status">By: <span class="answer">Username</span></p>
+                </div>
+              </div>
+
+            </div><!-- END div.row: Second Row of Purchased Blueprints -->
+          </div><!-- END div.col-md-12: Second Row of Purchased Blueprints Main Container -->
+        </div><!-- END div.row: Second Row of Purchased Blueprints Main Container -->
+
+      </div><!-- END div.col-md-12: My Purchased Blueprints Main Area -->
+    </div><!-- END div.row: My Purchased Blueprints Main Area -->
+
+  </div><!-- END div.col-md-9: Main Content Area (Address Bar and My Purchased Blueprints Main Area) -->
+
+{% endblock %}
+
+
+    

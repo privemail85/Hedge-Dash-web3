@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Hedge Alpha Web Application - My Dashboard{% endblock %}
+
+{% block content %}
+
+{% load staticfiles %}
+
+  <div class="col-md-9 mainContent"><!-- Start div.col-md-9: Main Content Area (Address Bar, Welcome User, and My Latest Blueprints) -->
+    <div class="row"><!-- Start div.row: Address Bar -->
+      <div class="col-md-12 p-0"><!-- Start div.col-md-12: Address Bar -->
+        <nav aria-label="breadcrumb addressBar">
+          <ol class="breadcrumb addressBar">
+            <li class="breadcrumb-item active" aria-current="page"><small>Home <i class="fas fa-home ml-2"></i></small></li>
+          </ol>
+        </nav>
+      </div><!-- END div.col-md-12: Address Bar -->
+    </div><!-- END div.row: Address Bar -->
+
+    <div class="row welcome mb-3"><!-- Start div.row: Welcome User -->
+      <div class="col-md-12"><!-- Start div.col-md-12: Welcome User -->
+        <p class="mt-3 small font-weight-bold">Welcome John!</p>
+      </div><!-- END div.col-md-12: Welcome User -->
+    </div><!-- END div.row: Welcome User -->
+
+    <div class="row mylatestBp mb-3"><!-- Start div.row: My Latest Blueprints Main Area (Heading + My Latest Blueprints Container)-->
+      <div class="col-md-12"><!-- Start div.col-md-12: My Latest Blueprints Main Area (Heading + My Latest Blueprints Container)-->
+        <div class="row"><!-- Start div.row: My Latest Blueprints Heading (h5) -->
+          <div class="col-md-12"><!-- Start div.col-md-12: My Latest Blueprints Heading (h5) -->
+            <h5 class="my-3 mt-4">My Latest Blueprints</h5>
+          </div><!-- END div.col-md-12: My Latest Blueprints Heading (h5) -->
+        </div><!-- END div.row: My Latest Blueprints Heading (h5) -->
+
+        <div class="row"><!-- Start div.row: My Latest Blueprints Container-->
+          <div class="col-md-12"><!-- Start div.col-md-12: My Latest Blueprints Container -->
+            <div class="row my-5 justify-content-center"><!-- Start div.row: 3 Bluerprints Direct Container -->
+              <div class="col-md-4"><!-- Start div.col-md-4: Blurptrint 1 Parent Container (no border) -->
+                <div class="container bp mb-3"><!-- Start div.container: Blurptrint 1 Container (has green border) -->
+                  <h6 class="my-4 ml-4">ETHUSD</h6>
+                  <p class="ml-4 small bpInfo">Initial Price: <span class="answer">$500</span></p>
+                  <p class="ml-4 small bpInfo">Target Price: <span class="answer">$600</span></p>
+                  <p class="ml-4 small bpInfo">Predicted Reward: <span class="answer">$100 (20%)</<span></p>
+                  <p class="ml-4 small bpInfo">Analysis Method: <span class="answer">Technical</span></p>
+                  <p class="ml-4 small status">Status: <span class="answer">Active</span></p>
+                </div><!-- END div.container: Blurptrint 1 Container (has green border) -->
+              </div><!-- END div.col-md-4: Blurptrint 1 Parent Container (no border) -->
+
+              <div class="col-md-4">
+                <div class="container bp mb-3">
+                  <h6 class="my-4 ml-4">ETHUSD</h6>
+                  <p class="ml-4 small bpInfo">Initial Price: <span class="answer">$500</span></p>
+                  <p class="ml-4 small bpInfo">Target Price: <span class="answer">$600</span></p>
+                  <p class="ml-4 small bpInfo">Predicted Reward: <span class="answer">$100 (20%)</<span></p>
+                  <p class="ml-4 small bpInfo">Analysis Method: <span class="answer">Technical</span></p>
+                  <p class="ml-4 small status">Status: <span class="answer">Active</span></p>
+              </div>
+            </div>
+
+              <div class="col-md-4">
+                <div class="container bp mb-3">
+                  <h6 class="my-4 ml-4">ETHUSD</h6>
+                  <p class="ml-4 small bpInfo">Initial Price: <span class="answer">$500</span></p>
+                  <p class="ml-4 small bpInfo">Target Price: <span class="answer">$600</span></p>
+                  <p class="ml-4 small bpInfo">Predicted Reward: <span class="answer">$100 (20%)</<span></p>
+                  <p class="ml-4 small bpInfo">Analysis Method: <span class="answer">Technical</span></p>
+                  <p class="ml-4 small status">Status: <span class="answer">Active</span></p>
+              </div>
+            </div>
+
+          </div><!-- END div.row: 3 Bluerprints Direct Container -->
+          </div><!-- END div.col-md-12: My Latest Blueprints Container -->
+        </div><!-- END div.row: My Latest Blueprints Container-->
+      </div><!-- END div.col-md-12: My Latest Blueprints Main Area (Heading + My Latest Blueprints Container)-->
+    </div><!-- END div.row: My Latest Blueprints Main Area (Heading + My Latest Blueprints Container)  -->
+  </div><!-- END div.col-md-9: Main Content Area (Address Bar, Welcome User, and My Latest Blueprints) -->
+
+{% endblock %}
+
+
+  

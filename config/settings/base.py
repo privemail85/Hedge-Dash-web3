@@ -44,7 +44,7 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
-    'apps.filter_lists',
+    'apps.create_contract',
 
 ]
 

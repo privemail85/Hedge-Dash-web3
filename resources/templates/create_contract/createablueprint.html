@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Create A Blueprint - Hedge Alpha Web Application{% endblock %}
+
+{% block content %}
+
+{% load staticfiles %}
+
+  <div class="col-md-9 mainContent"><!-- Start div.col-md-9: Main Content Area (Address Bar and Form) -->
+    <div class="row"><!-- Start div.row: Address Bar -->
+      <div class="col-md-12 p-0"><!-- Start div.col-md-12: Address Bar -->
+        <nav aria-label="breadcrumb addressBar">
+          <ol class="breadcrumb addressBar">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}"><small><i class="fas fa-home"></i></small></a></li>
+              <li class="breadcrumb-item active" aria-current="page"><small>Create A Blueprint</small></li>
+          </ol>
+        </nav>
+      </div><!-- END div.col-md-12: Address Bar -->
+    </div><!-- END div.row: Address Bar -->
+    <div class="row h-100 justify-content-center align-items-center"><!-- Start div.row: Form Container --><!-- To center horizontally:"justify-content-center". To center vertically: "align-items-center"-->
+      <form class="col-md-6"><!-- Start form.col-md-6 -->
+        <h4 class="mb-5 text-center cbpFormHeader">Create a Blueprint</h4>
+         <div class="form-group"><!-- Start div.form-group -->
+
+           <!-- Start: for Typeahead plugin -->
+           <!-- Search Stock -->
+            <label for="blueprint" class="mb-2 ip">Stock</label>
+           <input id= "ticker" class="typeahead form-control mb-5" value = "BTC" required>
+           <!-- End: for Typeahead plugin -->
+            <!-- Initial Price -->
+            <div class="form-group">
+             <label for="blueprint" class="mb-2 ip">Entry Price (USD)</label>
+             <input id="entryPrice" type="number" class="form-control" min="0" max="1000000" step="0.01" value = "9500" required>
+            </div>
+
+           <!-- Target Price -->
+           <div class="form-group">
+             <label for="blueprint" class="mb-2 ip" >Exit Price (USD)</label>
+             <input id="exitPrice" type="number" class="form-control" min="0" max="1000000" step="0.01" value = "5000" required>
+           </div>
+
+          <!-- Expiry Date -->
+           <label class="ip mt-3">Expiry Date</label>
+           <input id="dateExipre" type="date" name="bday" min="" max="3000-12-31" class="form-control mb-5" value = "2020-12-31" required>
+           <!-- Create -->
+          <button onclick="createBlueprint()" class="btn btn-primary buttonColor">Create
+            <!-- This page will ultimately connect to the link below by the backend developer -->
+            <!-- <a href="blueprintsubmissionconfirmation.html">Create</a> -->
+          <script src="{% static 'js/blueprint.js' %}"></script>
+          <script>
+
+            window.onload = function() {
+              if (typeof web3 === 'undefined') {
+                alert('You need MetaMask browser plugin to post transaction on Hedge.');
+              }
+            }
+
+            metaAccount = web3.eth.accounts[0];
+
+
+            mintContract = web3.eth.contract(mintAbi).at(mintAddress);
+            factoryContract = web3.eth.contract(factoryAbi).at(factoryAddress);
+            
+            factoryContract.creationPrice.call({from: metaAccount}, function(error, result) {
+                
+              if (!error) {
+                  
+                contractCreationPrice = Number(result);
+                alert(contractCreationPrice);
+
+              } else {
+
+                alert('failed at factory');
+
+              } 
+            });
+            
+            mintContract.allowance.call(metaAccount,factoryAddress, {from: metaAccount}, function(error, result) {
+            
+              if (!error) {
+
+                amountApproved = Number(result);
+                alert(amountApproved);
+
+              } else {
+
+                alert('failed at mint');
+
+              } 
+            });
+ 
+            
+            
+          </script>       
+
+
+          </button>
+          <!-- Cancel -->
+          <button type="button" class="btn btn-primary buttonColor float-right">
+            <a href="{% url 'myblueprints' %}'">Cancel</a>
+          </button>
+        </div><!-- END div.form-group -->
+      </form><!-- END form.col-md-6 -->
+    </div><!-- END div.row: Form Container -->
+  </div><!-- END div.col-md-9: Main Content Area (Address Bar and Form) -->
+
+<script>
+
+// Start: for Typeahead Plugin
+ $(".typeahead").typeahead({
+   source: stockSymbolArray,
+
+   //Q: Callback for what?
+   afterSelect: newStockSelected,
+   afterEmptySelect: $.noop,
+ });
+ // End: for Typeahead Plugin
+
+
+//Using HTML's datepicker lets user to pick any date. We used HTML's date picker for expiry date on the create a blueprint page. The problem was we do not want to let user picks a date in the past as the expiry date pof the blueprint. So, we made a datepicker validation below.
+// Start: Datepicker Validation: This makes sure that for expiry date of a blueprint, user cannot pick a date in the past, or a date beyond one year in the future.
+ function dateValidator() {
+   let d = new Date();
+   let dp = document.getElementById("datePickerInput");
+
+   let currentYear = d.getFullYear();
+   let currentMonth = d.getMonth() + 1;
+
+   let currentMonthString;
+   if (currentMonth < 10) {
+     currentMonthString = "0" + currentMonth;
+   }
+   else {
+     currentMonthString = currentMonth;
+   }
+
+   let currentDate = d.getDate();
+   let currentDateString;
+   if (currentDate < 10) {
+     currentDateString = "0" + currentDate;
+   }
+   else {
+     currentDateString = currentDate;
+   }
+
+   let minDateString = currentYear + "-" + currentMonthString + "-" + currentDateString;
+   dp.min = minDateString;
+
+   let maxDateString = (currentYear + 1) + "-" + currentMonthString + "-" + currentDateString;
+   dp.max = maxDateString;
+   //alert(maxDateString);
+ };
+ // runs the function dateValidator every 10 seconds.
+ setInterval(dateValidator, 60000);
+
+ // run the dateValidator function as soon as page loads.
+ $(document).ready(function() {
+   dateValidator();
+ });
+ // End: Datepicker Validation
+
+</script>
+
+{% endblock %}
+
+
+    
