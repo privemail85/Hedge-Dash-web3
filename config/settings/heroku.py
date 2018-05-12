@@ -1,4 +1,6 @@
 import os
+
+import django_heroku
 from .base import *
 
 
@@ -9,7 +11,9 @@ ALLOWED_HOSTS = ['*']
 ADMINS = ['nashruddin.amin@gmail.com']
 
 DATABASES = {
-    'default': {}
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+    }
 }
 
 EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
@@ -19,5 +23,7 @@ ANYMAIL = {
 }
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@example.com')
 
-import django_heroku
+# STATIC_ROOT = str(ROOT_DIR.path('resources/static'))
+# MEDIA_ROOT = str(ROOT_DIR.path('media'))
+
 django_heroku.settings(locals())

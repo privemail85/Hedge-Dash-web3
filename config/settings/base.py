@@ -113,3 +113,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     str(ROOT_DIR.path('resources/static')),
 )
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = str(ROOT_DIR.path('resources/media'))
