@@ -23,7 +23,7 @@ ANYMAIL = {
 }
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@example.com')
 
-# STATIC_ROOT = str(ROOT_DIR.path('resources/static'))
-# MEDIA_ROOT = str(ROOT_DIR.path('media'))
+STATIC_ROOT = str(ROOT_DIR.path('staticfiles'))
+MEDIA_ROOT = str(ROOT_DIR.path('media'))
 
 django_heroku.settings(locals())
