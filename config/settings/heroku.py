@@ -6,7 +6,7 @@ from .base import *
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 ADMINS = ['nashruddin.amin@gmail.com']
 
@@ -22,8 +22,5 @@ ANYMAIL = {
     'MAILGUN_SENDER_DOMAIN': os.getenv('MAILGUN_SENDER_DOMAIN'),
 }
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@example.com')
-
-STATIC_ROOT = str(ROOT_DIR.path('staticfiles'))
-MEDIA_ROOT = str(ROOT_DIR.path('media'))
 
 django_heroku.settings(locals())
