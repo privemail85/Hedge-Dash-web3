@@ -44,7 +44,7 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
-    'apps.create_contract',
+    'apps.blueprints',
 
 ]
 
