@@ -1,12 +1,11 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
 
 def index(request):
-    return HttpResponse('It works!')
+    return render(request, 'blueprints/index.html')
 
-
-# from django.shortcuts import render
 
 # from web3 import Web3, HTTPProvider
 
