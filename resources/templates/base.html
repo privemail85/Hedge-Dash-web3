@@ -1,91 +1,9 @@
-{% load staticfiles %}
-
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <!-- Bootstrap's CSS -->
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-  <!-- Font Awesome Version 5.0.10: need to be in the <head> of the document -->
-  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-
-  <!-- Custom CSS -->
-  <link href="{% static 'css/style.css' %}" rel="stylesheet">
-
-  <!-- Link to Google Fonts Roboto: currently not using Roboto font - just using Bootstrap's font -->
-  <!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
-
+  <title>Hedge</title>
 </head>
 <body>
-  <div class="container-fluid"><!-- Start div.container-fluid -->
-
-<!-- This project was first uploaded to Github on March 02 2018 -->
-
-  <!--/////////////////// SECTION 1: TOP NAV BAR (HORIZONTAL)  ////////////////////// -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
-  <a class="navbar-brand" href="index.html">
-      <img src="{% static 'images/hedgea_logo.svg' %}" width="80" height="80" alt="">
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav ml-auto"> <!--ml-auto pushes the user and logout to the right -->
-      <a class="nav-item nav-link small" href="#"><i class="fas fa-user"></i> John Robertson</a>
-      <a class="nav-item nav-link float-right small" href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-    </div>
-  </div>
-</nav>
-<!--///////////////////  END OF SECTION 1  ///////////////////////////////////////////////////////////// -->
-
-
-<!--///////////////////  SECTION 2: MAIN CONTAINER FOR LEFT NAV AND MAIN CONTENT AREA  ////////////////////// -->
-<div class="row"><!-- Start div.row: Left Nav and Main Content Area -->
-  <div class="col-md-3 leftNav"><!-- Start div.col-md-3: Left Nav -->
-    <div class="list-group list-group-flush">
-      <a href="{% url 'index' %}" class="list-group-item small"><i class="fas fa-home"></i> My Dashboard</a>
-      <li class="list-group-item small mt-5"><i class="fas fa-file-alt"></i> Blueprints</li>
-      <a href="{% url 'createablueprint' %}" class="list-group-item ml-4 small">Create A Blueprint</a>
-      <a href="{% url 'myblueprints' %}" class="list-group-item ml-4 small">My Blueprints</a>
-      <a href="{% url 'purchasedblueprints' %}" class="list-group-item ml-4 small">Purchased Blueprints</a>
-      <a href="{% url 'instructions' %}" class="list-group-item mt-5 small"><i class="fas fa-book"></i> Instructions</a>
-    </div>
-  </div><!-- End div.col-md-3: Left Nav -->
-  
-  {% block content %}{% endblock %} 
-
-</div><!-- END div.row: Left Nav and Main Content Area -->
-<!--///////////////////  END OF SECTION 2  ////////////////////////////////////////// -->
-
-<!--///////////////////  SECTION 3: CONTAINER FOR FOOTER AREA ////////////////////// -->
-
-<div class="row mt-5"><!-- Start div.row: Footer Container -->
-  <div class="col-md-12 ml-md-4 mt-5"><!-- Start div.col-md-12: Footer Container -->
-    <footer>
-        <p class="footerArea float-none float-md-left text-xs-center text-sm-center"><i class="fas fa-copyright"></i> 2018 <a href="https://rublix.io/" target="_blank">Rublix Development Inc.</a> All rights reserved.</p>
-    </footer>
-  </div><!-- END div.col-md-12: Footer Container -->
-</div><!-- END div.row: Footer Container -->
-<!--///////////////////  END OF SECTION 3  ////////////////////////////////////////// -->
-
-
-</div><!-- END of container-fluid -->
-
-<!-- Bootstrap's Javascript files: jQuery first, then popper.min.js, then bootstrap.min.js -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-<!-- Custom Javascript -->
-<script src="{% static 'js/myJavascript.js' %}"></script>
-
-<!--  Javascript for Typeahead Plugin -->
-<script src="{% static 'js/bootstrap3-typeahead.js"' %}'></script>
-
+  <h1>It works!</h1>
 </body>
 </html>
