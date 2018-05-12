@@ -19,18 +19,6 @@ ROOT_DIR = environ.Path(__file__) - 3
 APPS_DIR = ROOT_DIR.path('apps')
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5pr8=^=iz-_ghb9ybc%6x1rlk!a@j5yu#^s&bg+y8s@ve&5v6k'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 DJANGO_APPS = [
@@ -82,17 +70,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(str(ROOT_DIR), 'db.sqlite3'),
-    }
-}
 
 
 # Password validation
