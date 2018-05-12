@@ -17,6 +17,7 @@ import shutil
 # Build paths inside the project like this: os.path.join(ROOT_DIR, ...)
 ROOT_DIR = environ.Path(__file__) - 3
 APPS_DIR = ROOT_DIR.path('apps')
+BASE_DIR = str(ROOT_DIR)
 
 
 # Application definition
