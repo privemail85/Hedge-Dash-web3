@@ -53,5 +53,6 @@ working/
 ################
 .idea/
 .vendors/
+.env
 env
 venv

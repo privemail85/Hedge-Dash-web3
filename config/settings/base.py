@@ -10,14 +10,23 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
+import shutil
 import os
+import environ
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ROOT_DIR = environ.Path(__file__) - 3
+BASE_DIR = str(ROOT_DIR)
+APPS_DIR = ROOT_DIR.path('apps')
+
+if not os.path.isfile(str(ROOT_DIR('.env'))):
+    shutil.copyfile(str(ROOT_DIR('.env.example')), str('.env'))
+
+env = environ.Env()
+env.read_env(str(ROOT_DIR('.env')))
 
 
-# Application definition
-
+# APP CONFIGURATION
+# ------------------------------------------------------------------------------
 DJANGO_APPS = [
     'django.contrib.sites',
     'django.contrib.admin',
@@ -27,15 +36,20 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
-LOCAL_APPS = [
-    'apps.blueprints',
-
+THIRD_PARTY_APPS = [
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
+LOCAL_APPS = [
+    'apps.user',
+    'apps.blueprints',
+]
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+SITE_ID = 1
 
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
-
-
+# MIDDLEWARE CONFIGURATION
+# ------------------------------------------------------------------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -46,8 +60,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# URL Configuration
+# ------------------------------------------------------------------------------
 ROOT_URLCONF = 'config.urls'
 
+# TEMPLATE CONFIGURATION
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#templates
+# ------------------------------------------------------------------------------
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -68,10 +87,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
-# Password validation
-# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
-
+# PASSWORD VALIDATION
+# https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
+# ------------------------------------------------------------------------------
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -88,25 +106,46 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.11/topics/i18n/
-
+# GENERAL CONFIGURATION
+# ------------------------------------------------------------------------------
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-
+# STATIC FILE CONFIGURATION
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
+# ------------------------------------------------------------------------------
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'resources/static'),
 ]
 
+# ALLAUTH CONFIGURATION
+# https://docs.djangoproject.com/en/1.10/topics/auth/customizing/
+# http://django-allauth.readthedocs.io/en/latest/configuration.html
+# ------------------------------------------------------------------------------
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+ACCOUNT_SIGNUP_FORM_CLASS = 'apps.user.forms.SignupForm'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = False
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/user/login/'
+LOGIN_URL = '/user/login/'
+LOGIN_REDIRECT_URL = '/blueprints/'
+
+# TWILIO 
+# ------------------------------------------------------------------------------
+TWILIO_API_KEY = env('TWILIO_API_KEY')
+
+# OAUTH SETTINGS - FACEBOOK
+# ------------------------------------------------------------------------------
+FB_OAUTH_CLIENT_ID = env('FB_OAUTH_CLIENT_ID')
+FB_OAUTH_CLIENT_SECRET = env('FB_OAUTH_CLIENT_SECRET')

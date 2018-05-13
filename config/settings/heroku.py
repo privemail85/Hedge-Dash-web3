@@ -1,18 +1,27 @@
 import os
-import django_heroku
 from .base import *
 
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+# DEBUG
+# ------------------------------------------------------------------------------
 DEBUG = False
 ALLOWED_HOSTS = ['*']
 
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+# SECRET CONFIGURATION
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
+# ------------------------------------------------------------------------------
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+# DATABASE CONFIGURATION
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
+# ------------------------------------------------------------------------------
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
     }
 }
 
+# HEROKU CONFIGURATION
+# ------------------------------------------------------------------------------
+import django_heroku
 django_heroku.settings(locals())

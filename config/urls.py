@@ -19,6 +19,7 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = [
     url(r'^$', RedirectView.as_view(url='/blueprints/')),
+    url(r'^user/', include('apps.user.urls')),
     url(r'^blueprints/', include('apps.blueprints.urls')),
     url(r'^admin/', admin.site.urls),
 ]

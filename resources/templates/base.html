@@ -29,7 +29,7 @@
   <!--/////////////////// SECTION 1: TOP NAV BAR (HORIZONTAL)  ////////////////////// -->
   <nav class="navbar navbar-expand-lg navbar-dark">
   <a class="navbar-brand" href="index.html">
-      <img src="{% static 'images/hedgea_logo.svg' %}" width="80" height="80" alt="">
+      <img src="{% static 'img/hedgea_logo.svg' %}" width="80" height="80" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -37,8 +37,11 @@
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto"> <!--ml-auto pushes the user and logout to the right -->
-      <a class="nav-item nav-link small" href="#"><i class="fas fa-user"></i> John Robertson</a>
-      <a class="nav-item nav-link float-right small" href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      <a class="nav-item nav-link small" href="#"><i class="fas fa-user"></i> {{ request.user.username }}</a>
+      <a class="nav-item nav-link float-right small" href="" id="logout"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      <form method="post" action="{% url 'account_logout' %}" id="form-signout">
+        {% csrf_token %}
+      </form>
     </div>
   </div>
 </nav>
@@ -88,5 +91,11 @@
 <!--  Javascript for Typeahead Plugin -->
 <script src="{% static 'js/bootstrap3-typeahead.js' %}"></script>
 
+<script>
+  $('#logout').click(function(e) {
+      e.preventDefault();
+      $('#form-signout').submit();
+  });
+</script>
 </body>
 </html>
