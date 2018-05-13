@@ -29,7 +29,7 @@ ANYMAIL = {
     'MAILGUN_API_KEY': os.getenv('MAILGUN_API_KEY'),
     'MAILGUN_SENDER_DOMAIN': os.getenv('MAILGUN_SENDER_DOMAIN'),
 }
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL') or 'noreply@example.com'
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', 'noreply@example.com')
 
 # HEROKU CONFIGURATION
 # ------------------------------------------------------------------------------
