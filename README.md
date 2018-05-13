@@ -1,7 +1,7 @@
 Hedge-Dash-web3
 ===============
 
-Hedge dashboard with web3 integration.
+Hedge dashboard with web3 integration. Demo application is live at https://powerful-caverns-66638.herokuapp.com.
 
 Run on Development Machine
 --------------------------
