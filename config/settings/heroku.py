@@ -22,6 +22,15 @@ DATABASES = {
     }
 }
 
+# EMAIL CONFIGURATION
+# ------------------------------------------------------------------------------
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+ANYMAIL = {
+    'MAILGUN_API_KEY': os.getenv('MAILGUN_API_KEY'),
+    'MAILGUN_SENDER_DOMAIN': os.getenv('MAILGUN_SENDER_DOMAIN'),
+}
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL') or 'noreply@example.com'
+
 # HEROKU CONFIGURATION
 # ------------------------------------------------------------------------------
 import django_heroku
