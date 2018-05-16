@@ -129,7 +129,7 @@ def facebook_login(request):
             login(request, user, 
                   backend='allauth.account.auth_backends.AuthenticationBackend')
             return redirect('/')
-        except UserProfile.DoesNotExist:
+        except User.DoesNotExist:
             pass
 
     return render(request, 'account/signup.html', {
@@ -168,7 +168,7 @@ def google_login(request):
             login(request, user, 
                   backend='allauth.account.auth_backends.AuthenticationBackend')
             return redirect('/')
-        except UserProfile.DoesNotExist:
+        except User.DoesNotExist:
             pass
 
     return render(request, 'account/signup.html', {
