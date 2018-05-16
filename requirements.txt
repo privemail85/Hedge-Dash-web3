@@ -13,6 +13,7 @@ django-allauth==0.36.0
 django-anymail==2.2
 django-environ==0.4.4
 django-heroku==0.3.1
+django-settings-export==1.2.1
 environ==1.0
 eth-abi==1.0.0
 eth-account==0.2.2
