@@ -3,6 +3,7 @@ import os
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest, HttpResponseServerError
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import update_session_auth_hash, login
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.dispatch import receiver
 from django.conf import settings
@@ -121,7 +122,15 @@ def facebook_login(request):
               backend='allauth.account.auth_backends.AuthenticationBackend')
         return redirect('/')
     except UserProfile.DoesNotExist:
-        pass
+        try:
+            user = User.objects.get(email=data.get('email'))
+            user.profile.facebook_user_id = data.get('id')
+            user.profile.save()
+            login(request, user, 
+                  backend='allauth.account.auth_backends.AuthenticationBackend')
+            return redirect('/')
+        except UserProfile.DoesNotExist:
+            pass
 
     return render(request, 'account/signup.html', {
         'facebook_user_id': data.get('id'),
@@ -152,10 +161,18 @@ def google_login(request):
              backend='allauth.account.auth_backends.AuthenticationBackend')
         return redirect('/')
     except UserProfile.DoesNotExist:
-        pass
+        try:
+            user = User.objects.get(email=idinfo.get('email'))
+            user.profile.google_user_id = idinfo.get('sub') 
+            user.profile.save()
+            login(request, user, 
+                  backend='allauth.account.auth_backends.AuthenticationBackend')
+            return redirect('/')
+        except UserProfile.DoesNotExist:
+            pass
 
     return render(request, 'account/signup.html', {
-        'google_user_id': userid,
+        'google_user_id': idinfo.get('sub'),
         'first_name': idinfo.get('given_name'), 
         'last_name': idinfo.get('family_name'), 
         'email': idinfo.get('email'), 
