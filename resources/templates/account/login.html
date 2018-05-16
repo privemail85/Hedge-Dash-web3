@@ -40,8 +40,8 @@
         <div class="text-center">
           <p><button role="button" class="btn btn-primary" style="width: 220px;">Login</button></p>
           <p><h4>- or -</h4></p>
-          <p><a href="/user/facebook-login/"><img src="{% static "img/login-facebook.jpg" %}" style="border-radius:4px;"></a></p>
-          <p><a href="#"><img src="{% static "img/login-google.jpg"%}" style="border-radius:4px;"></a></p>
+          <p><a href="/user/facebook-login/" id="facebook-signin"><img src="{% static "img/login-facebook.jpg" %}" style="border-radius:4px;"></a></p>
+          <p><a href="#" id="google-signin"><img src="{% static "img/login-google.jpg"%}" style="border-radius:4px;"></a></p>
         </div>
 
       </form>
@@ -52,4 +52,32 @@
     </div>
   </div>
   <p class="text-gray-light text-center"><strong>Hedge &#x3B1; </strong> <span class="text-gray-light">&#xA9; 2017 Rublix Development</span></p>
+{% endblock %}
+
+{% block scripts %}
+  <script src="https://apis.google.com/js/api:client.js"></script>
+  <script>
+    var startApp = function() {
+      gapi.load('auth2', function(){
+        // Retrieve the singleton for the GoogleAuth library and set up the client.
+        auth2 = gapi.auth2.init({
+          client_id: '{{ settings.GOOGLE_OAUTH_CLIENT_ID }}',
+          cookiepolicy: 'single_host_origin',
+          scope: 'profile email'
+        });
+        attachSignin(document.getElementById('google-signin'));
+      });
+    };
+
+    function attachSignin(element) {
+      auth2.attachClickHandler(element, {},
+          function(googleUser) {
+            var id_token = googleUser.getAuthResponse().id_token;
+            document.location.href = "{% url 'google_login' %}?id_token=" + id_token;
+          }, function(error) {
+          });
+    }
+
+    startApp();
+  </script>
 {% endblock %}

@@ -80,6 +80,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django_settings_export.settings_export',
             ],
         },
     },
@@ -149,3 +150,15 @@ TWILIO_API_KEY = env('TWILIO_API_KEY')
 # ------------------------------------------------------------------------------
 FB_OAUTH_CLIENT_ID = env('FB_OAUTH_CLIENT_ID')
 FB_OAUTH_CLIENT_SECRET = env('FB_OAUTH_CLIENT_SECRET')
+
+# OAUTH SETTINGS - GOOGLE
+# https://developers.google.com/identity/sign-in/web/sign-in
+# ------------------------------------------------------------------------------
+GOOGLE_OAUTH_CLIENT_ID = env('GOOGLE_OAUTH_CLIENT_ID')
+
+# EXPORT REQUIRED SETTINGS FOR USE IN TEMPLATES
+# https://github.com/jakubroztocil/django-settings-export
+# ------------------------------------------------------------------------------
+SETTINGS_EXPORT = [
+    'GOOGLE_OAUTH_CLIENT_ID',
+]

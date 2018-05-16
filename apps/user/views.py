@@ -1,6 +1,6 @@
 import os
 
-from django.http import HttpResponse, JsonResponse, HttpResponseServerError
+from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest, HttpResponseServerError
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import update_session_auth_hash, login
 from django.contrib import messages
@@ -129,6 +129,36 @@ def facebook_login(request):
         'last_name': data.get('last_name'), 
         'email': data.get('email'), 
         'date_of_birth': data.get('birthday'),
+    })
+
+
+def google_login(request):
+    from google.oauth2 import id_token
+    from google.auth.transport import requests
+
+    client_id = settings.GOOGLE_OAUTH_CLIENT_ID
+    token = request.GET.get('id_token')
+    try:
+        idinfo = id_token.verify_oauth2_token(token, requests.Request(), client_id)
+        if idinfo['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
+            raise ValueError('Wrong issuer.')
+        userid = idinfo['sub']
+    except ValueError as e:
+        return HttpResponseBadRequest(str(e))
+
+    try:
+        profile = UserProfile.objects.get(google_user_id=userid)
+        login(request, profile.user,
+             backend='allauth.account.auth_backends.AuthenticationBackend')
+        return redirect('/')
+    except UserProfile.DoesNotExist:
+        pass
+
+    return render(request, 'account/signup.html', {
+        'google_user_id': userid,
+        'first_name': idinfo.get('given_name'), 
+        'last_name': idinfo.get('family_name'), 
+        'email': idinfo.get('email'), 
     })
 
 
